@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Navbar} from './components/navbar/Navbar';
 import {Registration} from './components/authorization/Registration';
 import {Login} from './components/authorization/Login';
-import {Home} from './components/home/Home';
+import {Columns} from './containers/Columns';
 import {auth} from './api/user';
 import './app.scss';
 
@@ -29,7 +29,7 @@ export const App = () => {
             </Switch>
           ) : (
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={Columns} />
               <Redirect to="/" />
             </Switch>
           )}

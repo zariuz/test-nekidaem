@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
-import {logout} from '../../store/user/usersReducer';
+import {logout} from '../../actions/users';
 import avatarLogo from '../../assets/img/avatar.svg';
 import './navbar.scss';
 

@@ -1,5 +1,5 @@
 import {instance} from './main';
-import {setUser} from '../store/user/usersReducer';
+import {logout, setUser} from '../actions/users';
 
 export const registration = (username, email, password) => {
   return async (dispatch) => {
@@ -37,6 +37,8 @@ export const auth = () => {
     try {
       if (localStorage.getItem('token')) {
         dispatch(setUser());
+      } else {
+        dispatch(logout());
       }
     } catch (e) {
       localStorage.removeItem('token');

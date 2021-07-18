@@ -1,5 +1,5 @@
 import {instance} from './main';
-import {setCards} from '../store/card/cardsReducer';
+import {actionsCards} from '../actions/cards';
 
 export const getCards = () => {
   return async (dispatch) => {
@@ -8,20 +8,33 @@ export const getCards = () => {
         headers: {Authorization: `JWT ${localStorage.getItem('token')}`},
       });
       console.log(response.data);
-      dispatch(setCards(response.data));
+      dispatch(actionsCards.setCards(response.data));
     } catch (e) {
       alert(e.response.data);
     }
   };
 };
 
-export const createCard = () => {
+export const addCard = () => {
   return async (dispatch) => {
     try {
       const response = await instance.post(`cards/`, {
         headers: {Authorization: `JWT ${localStorage.getItem('token')}`},
       });
-      dispatch(setCards(response.data));
+      dispatch(actionsCards.addCard(response.data));
+    } catch (e) {
+      alert(e.response.data);
+    }
+  };
+};
+
+export const removeCard = () => {
+  return async (dispatch) => {
+    try {
+      const response = await instance.post(`cards/`, {
+        headers: {Authorization: `JWT ${localStorage.getItem('token')}`},
+      });
+      dispatch(actionsCards.removeCard(response.data));
     } catch (e) {
       alert(e.response.data);
     }

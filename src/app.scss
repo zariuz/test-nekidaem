@@ -11,18 +11,31 @@ body {
   background-color: $background-color;
 }
 
+html,
+body,
+.app,
 #root {
   width: 100%;
-}
-
-.app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 100%;
 }
 
 .wrap {
-  width: 1140px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  img {
+    width: 12px;
+  }
+  &:hover {
+    background-color: rgba(9, 30, 66, 0.13);
+  }
 }

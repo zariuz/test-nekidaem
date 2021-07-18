@@ -1,11 +1,10 @@
-const SET_USER = 'SET_USER';
-const LOGOUT = 'LOGOUT';
+import {LOGOUT, SET_USER} from '../../actions/users';
 
-const defaultState = {
+const initialState = {
   isAuth: false,
 };
 
-export default function usersReducer(state = defaultState, action) {
+export default function usersReducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
       return {
@@ -22,6 +21,3 @@ export default function usersReducer(state = defaultState, action) {
       return state;
   }
 }
-
-export const setUser = () => ({type: SET_USER});
-export const logout = () => ({type: LOGOUT});
