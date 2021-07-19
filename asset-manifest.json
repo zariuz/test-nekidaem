@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/test-nekidaem/static/css/main.c1c66f49.chunk.css",
+    "main.js": "/test-nekidaem/static/js/main.2e0be4b6.chunk.js",
+    "main.js.map": "/test-nekidaem/static/js/main.2e0be4b6.chunk.js.map",
+    "runtime-main.js": "/test-nekidaem/static/js/runtime-main.d60d57b1.js",
+    "runtime-main.js.map": "/test-nekidaem/static/js/runtime-main.d60d57b1.js.map",
+    "static/js/2.789a9cbe.chunk.js": "/test-nekidaem/static/js/2.789a9cbe.chunk.js",
+    "static/js/2.789a9cbe.chunk.js.map": "/test-nekidaem/static/js/2.789a9cbe.chunk.js.map",
+    "index.html": "/test-nekidaem/index.html",
+    "static/css/main.c1c66f49.chunk.css.map": "/test-nekidaem/static/css/main.c1c66f49.chunk.css.map",
+    "static/js/2.789a9cbe.chunk.js.LICENSE.txt": "/test-nekidaem/static/js/2.789a9cbe.chunk.js.LICENSE.txt",
+    "static/media/add.0bbf1711.svg": "/test-nekidaem/static/media/add.0bbf1711.svg",
+    "static/media/avatar.1af8adc2.svg": "/test-nekidaem/static/media/avatar.1af8adc2.svg",
+    "static/media/clear.svg": "/test-nekidaem/static/media/clear.4ac10f93.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d60d57b1.js",
+    "static/js/2.789a9cbe.chunk.js",
+    "static/css/main.c1c66f49.chunk.css",
+    "static/js/main.2e0be4b6.chunk.js"
+  ]
+}
