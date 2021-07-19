@@ -10,7 +10,8 @@ export const registration = (username, email, password) => {
         password,
       });
       alert('Регистрация прошла успешна!');
-      console.log(response.data);
+      dispatch(setUser());
+      localStorage.setItem('token', response.data.token);
     } catch (e) {
       console.log(e.response.data);
     }
