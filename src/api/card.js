@@ -28,10 +28,23 @@ export const addCard = () => {
   };
 };
 
-export const removeCard = () => {
+export const updateCard = (id) => {
   return async (dispatch) => {
     try {
-      const response = await instance.post(`cards/`, {
+      const response = await instance.patch(`/cards/${id}/`, {
+        headers: {Authorization: `JWT ${localStorage.getItem('token')}`},
+      });
+      dispatch(actionsCards.addCard(response.data));
+    } catch (e) {
+      alert(e.response.data);
+    }
+  };
+};
+
+export const removeCard = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await instance.delete(`/cards/${id}/`, {
         headers: {Authorization: `JWT ${localStorage.getItem('token')}`},
       });
       dispatch(actionsCards.removeCard(response.data));

@@ -4,7 +4,7 @@ import clearSvg from '../../assets/img/clear.svg';
 
 import './Card.scss';
 
-const Card = ({cardIndex, columnIndex, children, onRemove}) =>
+export const Card = ({cardIndex, columnIndex, children, onRemove}) =>
   typeof cardIndex !== 'undefined' ? (
     <Draggable draggableId={`card-${columnIndex}-${cardIndex}`} index={cardIndex}>
       {(provided, snapshot) => (
@@ -25,5 +25,3 @@ const Card = ({cardIndex, columnIndex, children, onRemove}) =>
   ) : (
     <div className="card">{children}</div>
   );
-
-export default Card;

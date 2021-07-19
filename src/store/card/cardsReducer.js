@@ -5,33 +5,33 @@ const initialState = [
   {
     title: 'ON HOLD',
     cards: [
-      'Пройти курс по React',
-      'Отметить день рождения',
-      'Записаться на курсы английского языка, чтобы уехать жить в Лондон',
+      {id: 0, row: '1', seq_num: 100, text: 'Почитать книгу по React'},
+      {id: 1, row: '1', seq_num: 101, text: 'Почитать книгу по JS'},
+      {id: 2, row: '1', seq_num: 102, text: 'Почитать книгу по Vue'},
     ],
   },
   {
     title: 'IN PROGRESS',
     cards: [
-      'Записаться на курс по React',
-      'Забронировать тир на субботу',
-      'Накидать тем для статей в блог',
+      {id: 3, row: '2', seq_num: 103, text: 'Сходить в кино'},
+      {id: 4, row: '2', seq_num: 104, text: 'Сходить в музей'},
+      {id: 5, row: '2', seq_num: 105, text: 'Погулять в парке'},
     ],
   },
   {
     title: 'NEEDS REVIEW',
     cards: [
-      'Записаться на курс по React',
-      'Забронировать тир на субботу',
-      'Накидать тем для статей в блог',
+      {id: 3, row: '2', seq_num: 103, text: 'TypeScript'},
+      {id: 4, row: '2', seq_num: 104, text: 'Redux'},
+      {id: 5, row: '2', seq_num: 105, text: 'SCSS!'},
     ],
   },
   {
     title: 'APPROVED',
     cards: [
-      'Записаться на курс по React',
-      'Забронировать тир на субботу',
-      'Накидать тем для статей в блог',
+      {id: 3, row: '2', seq_num: 103, text: 'Hello'},
+      {id: 4, row: '2', seq_num: 104, text: 'Test'},
+      {id: 5, row: '2', seq_num: 105, text: 'Привет!'},
     ],
   },
 ];
@@ -48,7 +48,10 @@ export default function cardsReducer(state = initialState, action) {
         if (action.payload.columnIndex === index) {
           return {
             ...item,
-            cards: [...item.cards, action.payload.text],
+            cards: [
+              ...item.cards,
+              {id: 100, row: '2', seq_num: 105, text: action.payload.text},
+            ],
           };
         }
         return item;

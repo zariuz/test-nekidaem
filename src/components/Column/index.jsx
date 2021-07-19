@@ -2,7 +2,7 @@ import React from 'react';
 import {Droppable} from 'react-beautiful-dnd';
 
 import {AddForm} from '../../containers/AddForm';
-import Card from '../../containers/Card';
+import CardContainer from '../../containers/Card';
 import './Column.scss';
 
 export const Column = ({columnIndex, title, cards, onAddCard}) => {
@@ -18,9 +18,9 @@ export const Column = ({columnIndex, title, cards, onAddCard}) => {
             )}
             <div className="column__items">
               {cards.map((card, index) => (
-                <Card key={index} columnIndex={columnIndex} cardIndex={index}>
-                  {card}
-                </Card>
+                <CardContainer key={index} columnIndex={columnIndex} cardIndex={index}>
+                  {card.text}
+                </CardContainer>
               ))}
               {provided.placeholder}
             </div>
