@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect, HashRouter} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {Navbar} from './components/navbar/Navbar';
 import {Registration} from './components/authorization/Registration';
@@ -17,7 +17,7 @@ export const App = () => {
   }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="app">
         <Navbar />
         <div className="wrap">
@@ -35,6 +35,6 @@ export const App = () => {
           )}
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
