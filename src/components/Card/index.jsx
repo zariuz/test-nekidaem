@@ -13,12 +13,16 @@ export const Card = ({cardIndex, columnIndex, children, onRemove, cardID, cardSe
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}>
-          <span>{children}</span>
-          {`ID ${cardID} `}
-          {`SqN ${cardSeqNum}`}
+          <div>
+            {`id ${cardID} `}
+            {`sqn ${cardSeqNum}`}
+          </div>
 
-          <div onClick={onRemove} className="remove-btn">
-            <img src={clearSvg} alt="Clear svg icon" />
+          <div className="card__text">
+            <div>{children}</div>
+            <div onClick={onRemove} className="remove-btn">
+              <img src={clearSvg} alt="Clear svg icon" />
+            </div>
           </div>
         </div>
       )}

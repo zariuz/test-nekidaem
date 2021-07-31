@@ -11,9 +11,10 @@ export const registration = (username, email, password) => {
         password,
       });
       alert('Регистрация прошла успешна!');
-      dispatch(setUser());
       localStorage.setItem('token', response.data.token);
+      dispatch(setUser());
     } catch (e) {
+      alert('Вы ввели неправильные данные!');
       console.log(e.response.data);
     }
   };
@@ -26,12 +27,13 @@ export const login = (username, password) => {
         username,
         password,
       });
-      dispatch(setUser());
       localStorage.setItem('token', response.data.token);
+      dispatch(setUser());
 
-      // dispatch(getCards());
+      // setTimeout(dispatch(getCards()), 500);
     } catch (e) {
       alert('Вы ввели неправильное имя или пароль!');
+      console.log(e.response.data);
     }
   };
 };

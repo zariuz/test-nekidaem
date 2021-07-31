@@ -8,24 +8,32 @@ import {Columns} from './containers/Columns';
 import {auth} from './api/user';
 import {getCards} from './api/card';
 import './app.scss';
+import {initUser} from './actions/users';
 
 export const App = () => {
+  const initApp = useSelector((state) => state.users.initial);
   const isAuth = useSelector((state) => state.users.isAuth);
-  const cards = useSelector((state) => state.cards);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!isAuth) dispatch(auth());
-  }, []);
+    dispatch(initUser());
+  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getCards());
-  }, []);
+    if (!isAuth) {
+      dispatch(auth());
+    }
+  }, [dispatch, isAuth]);
+
+  useEffect(() => {
+    if (!isAuth) dispatch(getCards());
+  }, [dispatch, isAuth]);
 
   return (
     <HashRouter>
       <div className="app">
+        {console.log('App Render')}
         <Navbar />
         <div className="wrap">
           {!isAuth ? (

@@ -11,7 +11,7 @@ export const getCards = () => {
       const response = await instance.get(`cards/`, token);
       dispatch(actionsCards.setCards(response.data));
     } catch (e) {
-      alert(e.response.data);
+      alert(e.response.data.detail);
     }
   };
 };
