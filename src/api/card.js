@@ -26,18 +26,7 @@ export const addCard = (columnIndex, value) => {
       );
       dispatch(actionsCards.addCard(response.data));
     } catch (e) {
-      alert(e.response.data);
-    }
-  };
-};
-
-export const updateCard = (id) => {
-  return async (dispatch) => {
-    try {
-      const response = await instance.patch(`/cards/${id}/`, token);
-      dispatch(actionsCards.addCard(response.data));
-    } catch (e) {
-      alert(e.response.data);
+      alert(e.response.data.text[0]);
     }
   };
 };
@@ -47,6 +36,28 @@ export const removeCard = (id, columnIndex, cardIndex) => {
     try {
       const response = await instance.delete(`/cards/${id}/`, token);
       dispatch(actionsCards.removeCard(columnIndex, cardIndex));
+    } catch (e) {
+      alert(e.response.data);
+    }
+  };
+};
+
+export const updateCard = (id, destinationColumnIndex, destinationCardIndex, text) => {
+  return async (dispatch) => {
+    try {
+      const response = await instance.patch(
+        `/cards/${id}/`,
+        {row: destinationColumnIndex, seq_num: destinationCardIndex, text: text},
+        token,
+      );
+      dispatch(getCards());
+
+      // dispatch(
+      //   actionsCards.reorderCards({
+      //     source,
+      //     destination,
+      //   }),
+      // );
     } catch (e) {
       alert(e.response.data);
     }

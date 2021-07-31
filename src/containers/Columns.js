@@ -3,8 +3,7 @@ import {DragDropContext} from 'react-beautiful-dnd';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {Column} from '../components/Column';
-import {actionsCards} from '../actions/cards';
-import {addCard} from '../api/card';
+import {addCard, updateCard} from '../api/card';
 
 export const Columns = () => {
   const items = useSelector((state) => state.cards);
@@ -19,12 +18,19 @@ export const Columns = () => {
     ) {
       return;
     }
-    dispatch(
-      actionsCards.reorderCards({
-        source,
-        destination,
-      }),
-    );
+
+    // Достаем координаты карточки
+    const {index: sourceCardIndex, droppableId: sourceId} = source;
+    const {index: destinationCardIndex, droppableId: destinationId} = destination;
+    const sourceColumnIndex = parseInt(sourceId.replace('column-', ''));
+    const destinationColumnIndex = parseInt(destinationId.replace('column-', ''));
+
+    // Нашли у карточки ID и Text
+    const {id, text} = items
+      .find((i, index) => index === sourceColumnIndex)
+      .cards.find((i, index) => index === sourceCardIndex);
+
+    dispatch(updateCard(id, destinationColumnIndex, destinationCardIndex, text));
   };
 
   const onAddCard = (columnIndex, value) => {

@@ -14,6 +14,7 @@ export const Column = ({columnIndex, title, cards, onAddCard}) => {
             {title && (
               <div className="column__title">
                 <b>{title}</b>
+                <b>{cards.length}</b>
               </div>
             )}
             <div className="column__items">

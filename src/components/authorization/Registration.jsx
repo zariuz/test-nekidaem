@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './authorization.scss';
-import {Input} from '../../utils/input/Input';
+import {Input} from '../input/Input';
 import {registration} from '../../api/user';
 import {useDispatch} from 'react-redux';
 

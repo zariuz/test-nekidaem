@@ -1,5 +1,6 @@
 import {instance} from './main';
 import {logout, setUser} from '../actions/users';
+import {getCards} from './card';
 
 export const registration = (username, email, password) => {
   return async (dispatch) => {
@@ -27,8 +28,10 @@ export const login = (username, password) => {
       });
       dispatch(setUser());
       localStorage.setItem('token', response.data.token);
+
+      // dispatch(getCards());
     } catch (e) {
-      console.log(e.response.data.message);
+      alert('Вы ввели неправильное имя или пароль!');
     }
   };
 };
@@ -38,6 +41,7 @@ export const auth = () => {
     try {
       if (localStorage.getItem('token')) {
         dispatch(setUser());
+        // dispatch(getCards());
       } else {
         dispatch(logout());
       }

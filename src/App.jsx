@@ -21,7 +21,7 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(getCards());
-  }, [dispatch]);
+  }, []);
 
   return (
     <HashRouter>

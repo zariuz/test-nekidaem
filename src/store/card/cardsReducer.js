@@ -1,19 +1,34 @@
 import {ADD_CARDS, REMOVE_CARDS, REORDER_CARDS, SET_CARDS} from '../../actions/cards';
 import {reorderCards} from '../../helpers/reorderCards';
 
-const initialState = [];
+const initialState = [
+  {
+    title: 'ON HOLD',
+    cards: [],
+  },
+  {
+    title: 'IN PROGRESS',
+    cards: [],
+  },
+  {
+    title: 'NEEDS REVIEW',
+    cards: [],
+  },
+  {
+    title: 'APPROVED',
+    cards: [],
+  },
+];
 
 export default function cardsReducer(state = initialState, action) {
   switch (action.type) {
     case SET_CARDS:
-      return [
-        ...state,
-        {title: 'ON HOLD', cards: action.payload.filter((c) => c.row === '0')},
-        {title: 'IN PROGRESS', cards: action.payload.filter((c) => c.row === '1')},
-        {title: 'NEEDS REVIEW', cards: action.payload.filter((c) => c.row === '2')},
-        {title: 'APPROVED', cards: action.payload.filter((c) => c.row === '3')},
-      ];
-
+      return state.map((item, index) => {
+        return {
+          ...item,
+          cards: [...action.payload.filter((c) => c.row === `${index}`)],
+        };
+      });
     case ADD_CARDS:
       return state.map((item, index) => {
         if (+action.payload.row === index) {
