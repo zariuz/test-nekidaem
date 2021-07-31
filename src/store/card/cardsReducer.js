@@ -1,56 +1,32 @@
 import {ADD_CARDS, REMOVE_CARDS, REORDER_CARDS, SET_CARDS} from '../../actions/cards';
 import {reorderCards} from '../../helpers/reorderCards';
 
-const initialState = [
-  {
-    title: 'ON HOLD',
-    cards: [
-      {id: 0, row: '1', seq_num: 100, text: 'Почитать книгу по React'},
-      {id: 1, row: '1', seq_num: 101, text: 'Почитать книгу по JS'},
-      {id: 2, row: '1', seq_num: 102, text: 'Почитать книгу по Vue'},
-    ],
-  },
-  {
-    title: 'IN PROGRESS',
-    cards: [
-      {id: 3, row: '2', seq_num: 103, text: 'Сходить в кино'},
-      {id: 4, row: '2', seq_num: 104, text: 'Сходить в музей'},
-      {id: 5, row: '2', seq_num: 105, text: 'Погулять в парке'},
-    ],
-  },
-  {
-    title: 'NEEDS REVIEW',
-    cards: [
-      {id: 3, row: '2', seq_num: 103, text: 'TypeScript'},
-      {id: 4, row: '2', seq_num: 104, text: 'Redux'},
-      {id: 5, row: '2', seq_num: 105, text: 'SCSS!'},
-    ],
-  },
-  {
-    title: 'APPROVED',
-    cards: [
-      {id: 3, row: '2', seq_num: 103, text: 'Hello'},
-      {id: 4, row: '2', seq_num: 104, text: 'Test'},
-      {id: 5, row: '2', seq_num: 105, text: 'Привет!'},
-    ],
-  },
-];
+const initialState = [];
 
 export default function cardsReducer(state = initialState, action) {
   switch (action.type) {
     case SET_CARDS:
-      return {
+      return [
         ...state,
-        ...action.payload.cards,
-      };
+        {title: 'ON HOLD', cards: action.payload.filter((c) => c.row === '0')},
+        {title: 'IN PROGRESS', cards: action.payload.filter((c) => c.row === '1')},
+        {title: 'NEEDS REVIEW', cards: action.payload.filter((c) => c.row === '2')},
+        {title: 'APPROVED', cards: action.payload.filter((c) => c.row === '3')},
+      ];
+
     case ADD_CARDS:
       return state.map((item, index) => {
-        if (action.payload.columnIndex === index) {
+        if (+action.payload.row === index) {
           return {
             ...item,
             cards: [
               ...item.cards,
-              {id: 100, row: '2', seq_num: 105, text: action.payload.text},
+              {
+                id: action.payload.id,
+                row: action.payload.row,
+                seq_num: action.payload.seq_num,
+                text: action.payload.text,
+              },
             ],
           };
         }

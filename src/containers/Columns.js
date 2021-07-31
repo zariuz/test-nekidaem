@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {Column} from '../components/Column';
 import {actionsCards} from '../actions/cards';
+import {addCard} from '../api/card';
 
 export const Columns = () => {
   const items = useSelector((state) => state.cards);
@@ -27,7 +28,7 @@ export const Columns = () => {
   };
 
   const onAddCard = (columnIndex, value) => {
-    dispatch(actionsCards.addCard(columnIndex, value));
+    dispatch(addCard(columnIndex, value));
   };
 
   return (

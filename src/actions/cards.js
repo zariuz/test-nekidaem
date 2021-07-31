@@ -8,12 +8,9 @@ export const actionsCards = {
     type: SET_CARDS,
     payload: cards,
   }),
-  addCard: (columnIndex, text) => ({
+  addCard: (card) => ({
     type: ADD_CARDS,
-    payload: {
-      columnIndex,
-      text,
-    },
+    payload: card,
   }),
   removeCard: (columnIndex, cardIndex) => ({
     type: REMOVE_CARDS,

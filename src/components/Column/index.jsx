@@ -18,7 +18,12 @@ export const Column = ({columnIndex, title, cards, onAddCard}) => {
             )}
             <div className="column__items">
               {cards.map((card, index) => (
-                <CardContainer key={index} columnIndex={columnIndex} cardIndex={index}>
+                <CardContainer
+                  key={index}
+                  columnIndex={columnIndex}
+                  cardIndex={index}
+                  cardID={card.id}
+                  cardSeqNum={card.seq_num}>
                   {card.text}
                 </CardContainer>
               ))}

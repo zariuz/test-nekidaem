@@ -1,14 +1,20 @@
 import {Card} from '../components/Card';
 import {useDispatch, useSelector} from 'react-redux';
-import {actionsCards} from '../actions/cards';
+import {removeCard} from '../api/card';
 
-export default function CardContainer({columnIndex, cardIndex, children}) {
+export default function CardContainer({
+  columnIndex,
+  cardIndex,
+  children,
+  cardID,
+  cardSeqNum,
+}) {
   const items = useSelector((state) => state.cards);
   const dispatch = useDispatch();
 
-  const onRemove = (columnIndex, cardIndex) => {
+  const onRemove = () => {
     if (global.confirm('Вы действительно хотите удалить?')) {
-      dispatch(actionsCards.removeCard(columnIndex, cardIndex));
+      dispatch(removeCard(cardID, columnIndex, cardIndex));
     }
   };
 
@@ -19,6 +25,8 @@ export default function CardContainer({columnIndex, cardIndex, children}) {
       cardIndex={cardIndex}
       columnIndex={columnIndex}
       onRemove={onRemove}
+      cardID={cardID}
+      cardSeqNum={cardSeqNum}
     />
   );
 }

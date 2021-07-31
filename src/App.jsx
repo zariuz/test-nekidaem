@@ -1,20 +1,27 @@
 import React, {useEffect} from 'react';
-import {BrowserRouter, Route, Switch, Redirect, HashRouter} from 'react-router-dom';
+import {Route, Switch, Redirect, HashRouter} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {Navbar} from './components/navbar/Navbar';
 import {Registration} from './components/authorization/Registration';
 import {Login} from './components/authorization/Login';
 import {Columns} from './containers/Columns';
 import {auth} from './api/user';
+import {getCards} from './api/card';
 import './app.scss';
 
 export const App = () => {
   const isAuth = useSelector((state) => state.users.isAuth);
+  const cards = useSelector((state) => state.cards);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(auth());
+    if (!isAuth) dispatch(auth());
   }, []);
+
+  useEffect(() => {
+    dispatch(getCards());
+  }, [dispatch]);
 
   return (
     <HashRouter>

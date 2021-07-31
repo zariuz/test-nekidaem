@@ -4,7 +4,7 @@ import clearSvg from '../../assets/img/clear.svg';
 
 import './Card.scss';
 
-export const Card = ({cardIndex, columnIndex, children, onRemove}) =>
+export const Card = ({cardIndex, columnIndex, children, onRemove, cardID, cardSeqNum}) =>
   typeof cardIndex !== 'undefined' ? (
     <Draggable draggableId={`card-${columnIndex}-${cardIndex}`} index={cardIndex}>
       {(provided, snapshot) => (
@@ -14,9 +14,10 @@ export const Card = ({cardIndex, columnIndex, children, onRemove}) =>
           {...provided.draggableProps}
           {...provided.dragHandleProps}>
           <span>{children}</span>
-          <div
-            onClick={onRemove.bind(this, columnIndex, cardIndex)}
-            className="remove-btn">
+          {`ID ${cardID} `}
+          {`SqN ${cardSeqNum}`}
+
+          <div onClick={onRemove} className="remove-btn">
             <img src={clearSvg} alt="Clear svg icon" />
           </div>
         </div>
