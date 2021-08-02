@@ -1,5 +1,9 @@
-import { instance } from "./main";
+import axios from "axios";
 import { logout, setUser } from "../actions/users";
+
+let instance = axios.create({
+  baseURL: "https://trello.backend.tests.nekidaem.ru/api/v1/",
+});
 
 export const registration = (username, email, password) => {
   return async () => {

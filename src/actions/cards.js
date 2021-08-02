@@ -1,7 +1,6 @@
-export const SET_CARDS = 'SET_CARDS';
-export const ADD_CARDS = 'ADD_CARDS';
-export const REMOVE_CARDS = 'REMOVE_CARDS';
-export const REORDER_CARDS = 'REORDER_CARDS';
+export const SET_CARDS = "SET_CARDS";
+export const ADD_CARDS = "ADD_CARDS";
+export const REMOVE_CARDS = "REMOVE_CARDS";
 
 export const actionsCards = {
   setCards: (cards) => ({
@@ -17,13 +16,6 @@ export const actionsCards = {
     payload: {
       columnIndex,
       cardIndex,
-    },
-  }),
-  reorderCards: ({source, destination}) => ({
-    type: REORDER_CARDS,
-    payload: {
-      source,
-      destination,
     },
   }),
 };

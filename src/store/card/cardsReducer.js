@@ -1,21 +1,20 @@
-import {ADD_CARDS, REMOVE_CARDS, REORDER_CARDS, SET_CARDS} from '../../actions/cards';
-import {reorderCards} from '../../helpers/reorderCards';
+import { ADD_CARDS, REMOVE_CARDS, SET_CARDS } from "../../actions/cards";
 
 const initialState = [
   {
-    title: 'ON HOLD',
+    title: "ON HOLD",
     cards: [],
   },
   {
-    title: 'IN PROGRESS',
+    title: "IN PROGRESS",
     cards: [],
   },
   {
-    title: 'NEEDS REVIEW',
+    title: "NEEDS REVIEW",
     cards: [],
   },
   {
-    title: 'APPROVED',
+    title: "APPROVED",
     cards: [],
   },
 ];
@@ -53,20 +52,12 @@ export default function cardsReducer(state = initialState, action) {
           return {
             ...item,
             cards: item.cards.filter(
-              (_, filterIndex) => filterIndex !== action.payload.cardIndex,
+              (_, filterIndex) => filterIndex !== action.payload.cardIndex
             ),
           };
         }
         return item;
       });
-    case REORDER_CARDS: {
-      const {source, destination} = action.payload;
-      return reorderCards({
-        state,
-        source,
-        destination,
-      });
-    }
     default:
       return state;
   }

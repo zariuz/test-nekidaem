@@ -1,19 +1,33 @@
-import { instance } from "./main";
+import axios from "axios";
 import { actionsCards } from "../actions/cards";
 import { initUser } from "../actions/users";
 
-const token = {
-  headers: { Authorization: `JWT ${localStorage.getItem("token")}` },
-};
+let instance = axios.create({
+  baseURL: "https://trello.backend.tests.nekidaem.ru/api/v1/",
+});
+
+instance.interceptors.request.use(
+  async (config) => {
+    let token = localStorage.getItem("token");
+    if (!!token) {
+      config.headers["Authorization"] = `JWT ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    if (error.response.status === 401 || error.response.status === 403) {
+      document.location.reload();
+    }
+    throw error;
+  }
+);
 
 export const getCards = () => {
   return async (dispatch) => {
     try {
-      if (localStorage.getItem("token")) {
-        const response = await instance.get(`cards/`, token);
-        dispatch(actionsCards.setCards(response.data));
-        dispatch(initUser());
-      }
+      const response = await instance.get(`cards/`);
+      dispatch(actionsCards.setCards(response.data));
+      dispatch(initUser());
     } catch (e) {
       alert(e.response.data.detail);
     }
@@ -23,11 +37,10 @@ export const getCards = () => {
 export const addCard = (columnIndex, value) => {
   return async (dispatch) => {
     try {
-      const response = await instance.post(
-        `cards/`,
-        { row: columnIndex, text: value },
-        token
-      );
+      const response = await instance.post(`cards/`, {
+        row: columnIndex,
+        text: value,
+      });
       dispatch(actionsCards.addCard(response.data));
     } catch (e) {
       alert(e.response.data.text[0]);
@@ -38,9 +51,8 @@ export const addCard = (columnIndex, value) => {
 export const removeCard = (id, columnIndex, cardIndex) => {
   return async (dispatch) => {
     try {
-      const response = await instance.delete(`/cards/${id}/`, token);
+      await instance.delete(`/cards/${id}/`);
       dispatch(actionsCards.removeCard(columnIndex, cardIndex));
-      console.log(response.data);
     } catch (e) {
       alert(e.response.data);
     }
@@ -55,23 +67,12 @@ export const updateCard = (
 ) => {
   return async (dispatch) => {
     try {
-      const response = await instance.patch(
-        `/cards/${id}/`,
-        {
-          row: destinationColumnIndex,
-          seq_num: destinationCardIndex,
-          text: text,
-        },
-        token
-      );
+      await instance.patch(`/cards/${id}/`, {
+        row: destinationColumnIndex,
+        seq_num: destinationCardIndex,
+        text: text,
+      });
       dispatch(getCards());
-      console.log(response.data);
-      // dispatch(
-      //   actionsCards.reorderCards({
-      //     source,
-      //     destination,
-      //   }),
-      // );
     } catch (e) {
       alert(e.response.data);
     }
