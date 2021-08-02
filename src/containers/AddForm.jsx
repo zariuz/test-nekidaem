@@ -1,9 +1,14 @@
-import React, {useState, useRef, useEffect} from 'react';
-import AddFormBase from '../components/AddForm';
+import React, { useState, useRef, useEffect } from "react";
+import { AddFormBase } from "../components/AddFormBase";
 
-export const AddForm = ({columnIndex, onAddCard, onAddColumn, isEmptyColumn}) => {
+export const AddForm = ({
+  columnIndex,
+  onAddCard,
+  onAddColumn,
+  isEmptyColumn,
+}) => {
   const [showForm, setShowForm] = useState(false);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const textareaRef = useRef(null);
 
   useEffect(() => {
@@ -18,7 +23,7 @@ export const AddForm = ({columnIndex, onAddCard, onAddColumn, isEmptyColumn}) =>
     } else {
       onAddCard(columnIndex, value);
     }
-    setValue('');
+    setValue("");
     setShowForm(false);
   };
 

@@ -1,6 +1,6 @@
-@import '../../utils/colors.scss';
+@import "../../utils/colors.scss";
 
-input {
+.input {
   border: none;
   border-bottom: $font-color solid 3px;
   background: transparent;
@@ -8,8 +8,18 @@ input {
   padding: 3px;
   &:focus {
     outline: none;
-    transform: scale(1.01);
+    border: 2px solid #ffe799;
   }
+}
+
+.errorInput {
+  background: lightpink;
+  border: 2px solid red;
+}
+
+.error {
+  color: red;
+  height: 20px;
 }
 
 ::-webkit-input-placeholder {

@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import './Button.scss';
+import "./Button.scss";
 
-export const Button = ({children, onClick}) => {
+export const Button = ({ children, onClick, className }) => {
   return (
-    <button className="button" onClick={onClick}>
+    <button className={className} onClick={onClick}>
       {children}
     </button>
   );
