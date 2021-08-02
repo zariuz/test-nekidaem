@@ -6,7 +6,7 @@ let instance = axios.create({
 });
 
 export const registration = (username, email, password) => {
-  return async () => {
+  return async (dispatch) => {
     try {
       const response = await instance.post(`users/create/`, {
         username,
@@ -15,6 +15,7 @@ export const registration = (username, email, password) => {
       });
       alert("Регистрация прошла успешна!");
       localStorage.setItem("token", response.data.token);
+      dispatch(setUser());
     } catch (e) {
       alert("Вы ввели неправильные данные!");
       console.log(e.response.data);
