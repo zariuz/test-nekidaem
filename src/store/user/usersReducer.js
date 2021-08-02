@@ -1,4 +1,4 @@
-import {INIT_USER, LOGOUT, SET_USER} from '../../actions/users';
+import { INIT_USER, LOGOUT, SET_USER } from "../../actions/users";
 
 const initialState = {
   initial: false,
@@ -18,9 +18,10 @@ export default function usersReducer(state = initialState, action) {
         isAuth: true,
       };
     case LOGOUT:
-      localStorage.removeItem('token');
+      localStorage.removeItem("token");
       return {
         ...state,
+        initial: false,
         isAuth: false,
       };
     default:

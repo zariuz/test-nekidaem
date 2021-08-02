@@ -1,20 +1,18 @@
-import {instance} from './main';
-import {logout, setUser} from '../actions/users';
-import {getCards} from './card';
+import { instance } from "./main";
+import { logout, setUser } from "../actions/users";
 
 export const registration = (username, email, password) => {
-  return async (dispatch) => {
+  return async () => {
     try {
       const response = await instance.post(`users/create/`, {
         username,
         email,
         password,
       });
-      alert('Регистрация прошла успешна!');
-      localStorage.setItem('token', response.data.token);
-      dispatch(setUser());
+      alert("Регистрация прошла успешна!");
+      localStorage.setItem("token", response.data.token);
     } catch (e) {
-      alert('Вы ввели неправильные данные!');
+      alert("Вы ввели неправильные данные!");
       console.log(e.response.data);
     }
   };
@@ -27,12 +25,11 @@ export const login = (username, password) => {
         username,
         password,
       });
-      localStorage.setItem('token', response.data.token);
+      localStorage.setItem("token", response.data.token);
       dispatch(setUser());
-
-      // setTimeout(dispatch(getCards()), 500);
+      console.log(localStorage.getItem("token"));
     } catch (e) {
-      alert('Вы ввели неправильное имя или пароль!');
+      alert("Вы ввели неправильное имя или пароль!");
       console.log(e.response.data);
     }
   };
@@ -41,14 +38,13 @@ export const login = (username, password) => {
 export const auth = () => {
   return async (dispatch) => {
     try {
-      if (localStorage.getItem('token')) {
+      if (localStorage.getItem("token")) {
         dispatch(setUser());
-        // dispatch(getCards());
       } else {
         dispatch(logout());
       }
     } catch (e) {
-      localStorage.removeItem('token');
+      localStorage.removeItem("token");
     }
   };
 };

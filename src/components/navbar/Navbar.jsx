@@ -1,9 +1,10 @@
-import React from 'react';
-import {NavLink} from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
-import {logout} from '../../actions/users';
-import avatarLogo from '../../assets/img/avatar.svg';
-import './navbar.scss';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../actions/users";
+import avatarLogo from "../../assets/img/avatar.svg";
+import "./navbar.scss";
+import { getCards } from "../../api/card";
 
 export const Navbar = () => {
   const isAuth = useSelector((state) => state.users.isAuth);
@@ -23,6 +24,11 @@ export const Navbar = () => {
         {!isAuth && (
           <div className="navbar__registration">
             <NavLink to="/registration">Регистрация</NavLink>
+          </div>
+        )}
+        {isAuth && (
+          <div className="navbar__login" onClick={() => dispatch(getCards())}>
+            Получить Карточки
           </div>
         )}
         {isAuth && (
