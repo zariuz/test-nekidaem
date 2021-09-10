@@ -1,8 +1,8 @@
 {
-  "name": "test-nekidaem",
-  "version": "0.1.0",
+  "name": "trello-clone-react",
+  "version": "1.0.0",
   "private": true,
-  "homepage": "https://zariuz.github.io/test-nekidaem/",
+  "homepage": "https://zariuz.github.io/trello-clone-react/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
