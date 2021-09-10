@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/test-nekidaem/static/css/main.91408fdf.chunk.css",
-    "main.js": "/test-nekidaem/static/js/main.a24a690d.chunk.js",
-    "main.js.map": "/test-nekidaem/static/js/main.a24a690d.chunk.js.map",
-    "runtime-main.js": "/test-nekidaem/static/js/runtime-main.d60d57b1.js",
-    "runtime-main.js.map": "/test-nekidaem/static/js/runtime-main.d60d57b1.js.map",
-    "static/js/2.e2a04969.chunk.js": "/test-nekidaem/static/js/2.e2a04969.chunk.js",
-    "static/js/2.e2a04969.chunk.js.map": "/test-nekidaem/static/js/2.e2a04969.chunk.js.map",
-    "index.html": "/test-nekidaem/index.html",
-    "static/css/main.91408fdf.chunk.css.map": "/test-nekidaem/static/css/main.91408fdf.chunk.css.map",
-    "static/js/2.e2a04969.chunk.js.LICENSE.txt": "/test-nekidaem/static/js/2.e2a04969.chunk.js.LICENSE.txt",
-    "static/media/add.0bbf1711.svg": "/test-nekidaem/static/media/add.0bbf1711.svg",
-    "static/media/avatar.1af8adc2.svg": "/test-nekidaem/static/media/avatar.1af8adc2.svg",
-    "static/media/clear.svg": "/test-nekidaem/static/media/clear.4ac10f93.svg"
+    "main.css": "/trello-clone-react/static/css/main.91408fdf.chunk.css",
+    "main.js": "/trello-clone-react/static/js/main.f51b339f.chunk.js",
+    "main.js.map": "/trello-clone-react/static/js/main.f51b339f.chunk.js.map",
+    "runtime-main.js": "/trello-clone-react/static/js/runtime-main.63e9d944.js",
+    "runtime-main.js.map": "/trello-clone-react/static/js/runtime-main.63e9d944.js.map",
+    "static/js/2.171f8f0d.chunk.js": "/trello-clone-react/static/js/2.171f8f0d.chunk.js",
+    "static/js/2.171f8f0d.chunk.js.map": "/trello-clone-react/static/js/2.171f8f0d.chunk.js.map",
+    "index.html": "/trello-clone-react/index.html",
+    "static/css/main.91408fdf.chunk.css.map": "/trello-clone-react/static/css/main.91408fdf.chunk.css.map",
+    "static/js/2.171f8f0d.chunk.js.LICENSE.txt": "/trello-clone-react/static/js/2.171f8f0d.chunk.js.LICENSE.txt",
+    "static/media/add.0bbf1711.svg": "/trello-clone-react/static/media/add.0bbf1711.svg",
+    "static/media/avatar.1af8adc2.svg": "/trello-clone-react/static/media/avatar.1af8adc2.svg",
+    "static/media/clear.svg": "/trello-clone-react/static/media/clear.4ac10f93.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.d60d57b1.js",
-    "static/js/2.e2a04969.chunk.js",
+    "static/js/runtime-main.63e9d944.js",
+    "static/js/2.171f8f0d.chunk.js",
     "static/css/main.91408fdf.chunk.css",
-    "static/js/main.a24a690d.chunk.js"
+    "static/js/main.f51b339f.chunk.js"
   ]
 }
